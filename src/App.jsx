@@ -8,20 +8,22 @@ import SystemLogs from './components/SystemLogs';
 import LogsAnalyzer from './components/LogsAnalyzer';
 import AppDiagnostics from './components/AppDiagnostics';
 import Sidebar from './components/Sidebar';
+import Footer from './components/Footer'; // Import Footer
 import { SystemDataProvider } from './context/SystemDataContext';
 import AppMonitoring from './components/AppMonitoring';
 import PredictiveAnalysis from './components/PredictiveAnalysis';
 import DriverUpdates from './components/DriverUpdates';
 import DiskPartitioner from './components/DiskPartitioner';
 import NetworkDiagnosisTool from './components/NetworkDiagnosisTool';
+
 function App() {
   return (
     <SystemDataProvider>
       <Router>
         <div className="flex h-screen bg-[#111217] overflow-hidden">
           <Sidebar />
-          <div className="flex-1 ml-[200px] flex flex-col overflow-auto">
-            <main className="px-6 py-3 h-full">
+          <div className="flex-1 ml-[200px] flex flex-col overflow-hidden">
+            <main className="flex-grow px-6 py-3 overflow-y-auto">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/diagnose" element={<DiagnosisTool />} />
@@ -37,6 +39,7 @@ function App() {
                 <Route path="/network-diagnostics" element={<NetworkDiagnosisTool />} />
               </Routes>
             </main>
+            <Footer />
           </div>
         </div>
       </Router>
@@ -44,4 +47,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
